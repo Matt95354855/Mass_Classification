@@ -4,6 +4,25 @@
 
 > **Où se trouve l’application ?** Le code, l’interface et le mode découverte sont sur la branche [`feature/platform-production-foundation`](https://github.com/Matt95354855/Mass_Classification/tree/feature/platform-production-foundation). La [pull request vers `main`](https://github.com/Matt95354855/Mass_Classification/pull/1) est ouverte. Le présent README donne le parcours utilisateur et la vue d’ensemble ; le [guide technique](https://github.com/Matt95354855/Mass_Classification/blob/feature/platform-production-foundation/docs/README_TECHNIQUE.md) détaille les commandes d’exploitation et les limites de chaque composant.
 
+## Intégration Classcale et campagne DocLayNet
+
+Mass Classification est le backend documentaire de l’écosystème Classcale. Le dépôt [Harness](https://github.com/Matt95354855/Harness) orchestre les LLM locaux, les outils et l’adaptateur DocLayNet ; ce dépôt fournit l’API, le worker, la recherche, la provenance, le graphe et les fonctions de revue.
+
+Le 1 octobre 2026, deux modèles locaux ont été comparés sur les 20 premières pages du split `test` de DocLayNet, soit 203 objets :
+
+| Modèle | Format local | Accuracy | Macro-F1 |
+| --- | --- | ---: | ---: |
+| GPT-OSS 20B | GGUF MXFP4 | 82,76 % | 66,85 % |
+| Qwen 3.6 27B Instruct | GGUF Q4_K_M | 78,82 % | 56,48 % |
+
+Cette mesure appartient au protocole du Harness et utilise le texte extrait et la géométrie des objets, sans pixels PNG ; elle ne mesure donc pas directement le TNN Mass Classification ni une classification vision multimodale. Le rapport complet, le protocole et les limites sont disponibles dans le [rapport DocLayNet du Harness](https://github.com/Matt95354855/Harness/blob/main/docs/doclaynet-benchmark-2026-10-01.md).
+
+### Machine utilisée
+
+La campagne a été exécutée sur Windows 11 64 bits avec un AMD EPYC 9354 exposé à 4 cœurs/8 threads, une NVIDIA RTX 2000 Ada Generation avec environ 4 Go dédiés exposés et 16 Go de RAM visibles. Les modèles étaient servis localement par `llama.cpp` via des endpoints OpenAI-compatible. Docker Desktop est installé pour le service complet ; son backend WSL2 doit être disponible avant un lancement Compose.
+
+Les classes DocLayNet et les classes métier de Mass Classification sont des contrats différents. Les rapports d’évaluation doivent rester séparés : DocLayNet mesure des labels de mise en page (`Text`, `Table`, `Picture`, etc.), tandis que Mass Classification produit une analyse documentaire, des preuves et une priorité opérationnelle.
+
 
 ## Essayer l’interface en quelques minutes
 

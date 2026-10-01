@@ -138,13 +138,19 @@ def extract(path: Path, filename: str, asr_model: str = "small", depth: int = 0)
             for member in members:
                 if member.is_dir() or member.filename.startswith("/") or ".." in Path(member.filename).parts:
                     continue
-                with tempfile.NamedTemporaryFile() as tmp:
-                    tmp.write(archive.read(member)); tmp.flush()
+                # Close the temporary file before reopening it. Windows keeps
+                # NamedTemporaryFile handles locked, unlike POSIX systems.
+                with tempfile.NamedTemporaryFile(prefix="mass-archive-", delete=False) as temp:
+                    temp_path = Path(temp.name)
+                    temp.write(archive.read(member))
+                try:
                     try:
-                        child, _ = extract(Path(tmp.name), member.filename, asr_model, depth + 1)
+                        child, _ = extract(temp_path, member.filename, asr_model, depth + 1)
                         pieces.append(f"[{member.filename}]\n{child}")
                     except ExtractionError:
                         continue
+                finally:
+                    temp_path.unlink(missing_ok=True)
         text = "\n".join(pieces)
     elif suffix in {".txt", ".md", ".csv", ".tsv", ".json", ".xml", ".yaml", ".yml", ".html", ".htm", ".py", ".js", ".sql", ".log"}:
         blob = path.read_bytes()
