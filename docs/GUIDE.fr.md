@@ -7,7 +7,7 @@
 
 ## Intégration Classcale et campagne DocLayNet
 
-Mass Classification est le backend documentaire de l’écosystème Classcale. Le dépôt [Harness](https://github.com/Matt95354855/Harness) orchestre les LLM locaux, les outils et l’adaptateur DocLayNet ; ce dépôt fournit l’API, le worker, la recherche, la provenance, le graphe et les fonctions de revue.
+Mass Classification est le backend documentaire de l’écosystème Classcale. Le dépôt [Harness](https://github.com/Matt95354855/llm-agent-harness) orchestre les LLM locaux, les outils et l’adaptateur DocLayNet ; ce dépôt fournit l’API, le worker, la recherche, la provenance, le graphe et les fonctions de revue.
 
 Le 1 octobre 2026, deux modèles locaux ont été comparés sur les 20 premières pages du split `test` de DocLayNet, soit 203 objets :
 
@@ -16,7 +16,7 @@ Le 1 octobre 2026, deux modèles locaux ont été comparés sur les 20 première
 | GPT-OSS 20B | GGUF MXFP4 | 82,76 % | 66,85 % |
 | Qwen 3.6 27B Instruct | GGUF Q4_K_M | 78,82 % | 56,48 % |
 
-Cette mesure appartient au protocole du Harness et utilise le texte extrait et la géométrie des objets, sans pixels PNG ; elle ne mesure donc pas directement le TNN Mass Classification ni une classification vision multimodale. Le rapport complet, le protocole et les limites sont disponibles dans le [rapport DocLayNet du Harness](https://github.com/Matt95354855/Harness/blob/main/docs/doclaynet-benchmark-2026-10-01.md).
+Cette mesure appartient au protocole du Harness et utilise le texte extrait et la géométrie des objets, sans pixels PNG ; elle ne mesure donc pas directement le TNN Mass Classification ni une classification vision multimodale. Le rapport complet, le protocole et les limites sont disponibles dans le [rapport DocLayNet du Harness](https://github.com/Matt95354855/llm-agent-harness/blob/main/docs/doclaynet-benchmark-2026-10-01.md).
 
 ### Machine utilisée
 
@@ -30,8 +30,8 @@ Les classes DocLayNet et les classes métier de Mass Classification sont des con
 **Pré-requis :** Python 3.11 ou plus récent. Le mode découverte ne demande ni compte, ni Docker, ni téléchargement de modèle. Les trois pièces initiales sont fictives.
 
 ```bash
-git clone https://github.com/Matt95354855/Mass_Classification.git
-cd Mass_Classification
+git clone https://github.com/Matt95354855/document-intelligence-platform.git
+cd document-intelligence-platform
 python -m venv .venv
 source .venv/bin/activate                 # Windows : .venv\Scripts\activate
 python -m pip install -r requirements-demo.txt
@@ -120,7 +120,7 @@ flowchart TD
 | Déploiement | Compose, manifestes Kubernetes de référence, option CUDA, métriques et vérification du journal | GPU, cluster, stockage partagé, secrets, TLS et ancrage externe d’audit à fournir et à tester |
 | Mobilité et hors ligne | Console responsive, PWA et page d’exemple fictif accessible hors ligne | Pas d’application native ; aucun dossier sensible, résultat API ou document réel dans le cache hors ligne |
 
-Le [guide technique](https://github.com/Matt95354855/Mass_Classification/blob/main/docs/README_TECHNIQUE.md#extensions-should-have-et-nice-to-have) reprend **chaque point Should Have et Nice to Have** du document de conception, avec son état précis. Le [guide de conception initial](https://github.com/Matt95354855/Mass_Classification/blob/main/docs/GUIDE_CONSTRUCTION_PLATEFORME_COMPLETE.md) contient aussi des idées et des hypothèses qui ne doivent pas être confondues avec une capacité mesurée du code.
+Le [guide technique](https://github.com/Matt95354855/document-intelligence-platform/blob/main/docs/README_TECHNIQUE.md#extensions-should-have-et-nice-to-have) reprend **chaque point Should Have et Nice to Have** du document de conception, avec son état précis. Le [guide de conception initial](https://github.com/Matt95354855/document-intelligence-platform/blob/main/docs/GUIDE_CONSTRUCTION_PLATEFORME_COMPLETE.md) contient aussi des idées et des hypothèses qui ne doivent pas être confondues avec une capacité mesurée du code.
 
 ## API, accès et traçabilité
 
@@ -144,8 +144,8 @@ python -m compileall -q mass_classification
 python -m pytest -q
 ```
 
-La CI exécute les tests et construit l’image Docker. Les tests couvrent notamment l’essai local, la provenance des dates, les suggestions d’entités, les règles et des invariants d’audit. La validation de bout en bout avec PostgreSQL, Redis, médias réels et charge de production nécessite une infrastructure représentative. Le [guide technique](https://github.com/Matt95354855/Mass_Classification/blob/main/docs/README_TECHNIQUE.md) décrit les modèles, la réindexation par espace, les commandes d’exploitation et les limites.
+La CI exécute les tests et construit l’image Docker. Les tests couvrent notamment l’essai local, la provenance des dates, les suggestions d’entités, les règles et des invariants d’audit. La validation de bout en bout avec PostgreSQL, Redis, médias réels et charge de production nécessite une infrastructure représentative. Le [guide technique](https://github.com/Matt95354855/document-intelligence-platform/blob/main/docs/README_TECHNIQUE.md) décrit les modèles, la réindexation par espace, les commandes d’exploitation et les limites.
 
 **Avant tout usage sensible**, constituer des jeux annotés, évaluer les erreurs des modèles, tester les droits entre espaces, les restaurations et la montée en charge, définir la conservation des pièces, puis configurer secrets, chiffrement et TLS. Les coûts, latences et volumes envisagés dans le guide de conception sont des objectifs à mesurer, pas des résultats acquis.
 
-Voir [LICENSE](https://github.com/Matt95354855/Mass_Classification/blob/main/LICENSE) pour la licence. Ne publier ni données bancaires réelles, ni dossiers d’enquête, ni clés d’accès dans les contributions.
+Voir [LICENSE](https://github.com/Matt95354855/document-intelligence-platform/blob/main/LICENSE) pour la licence. Ne publier ni données bancaires réelles, ni dossiers d’enquête, ni clés d’accès dans les contributions.

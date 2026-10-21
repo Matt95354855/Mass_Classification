@@ -1,12 +1,12 @@
-# Mass Classification
+# Document Intelligence Platform (Mass Classification)
 
 **Plateforme d'intelligence documentaire pour dossiers financiers et d'enquête : importer, extraire, classer, rechercher et explorer chaque pièce avec sa provenance.** Chaque lien entre entités renvoie à un passage source, chaque score est expliqué, et les analystes consignent leur revue dans un journal d'audit infalsifiable.
 
-[![CI](https://github.com/Matt95354855/Mass_Classification/actions/workflows/ci.yml/badge.svg)](https://github.com/Matt95354855/Mass_Classification/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/Python-3.11+-3776AB) ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-pgvector-336791) ![Docker](https://img.shields.io/badge/déploiement-Docker%20%7C%20K8s-2496ED)
+[![CI](https://github.com/Matt95354855/document-intelligence-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/Matt95354855/document-intelligence-platform/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/Python-3.11+-3776AB) ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-pgvector-336791) ![Docker](https://img.shields.io/badge/déploiement-Docker%20%7C%20K8s-2496ED)
 
 [English](README.md) · [Français](README.fr.md)
 
-> Ce service est aussi intégré au monorepo [Harness](https://github.com/Matt95354855/Harness), qui l'orchestre avec des LLM locaux.
+> Ce service est aussi intégré au monorepo [Harness](https://github.com/Matt95354855/llm-agent-harness), qui l'orchestre avec des LLM locaux.
 
 ## Points forts
 
@@ -36,8 +36,8 @@ flowchart LR
 Mode découverte — sans Docker, compte ni téléchargement de modèle, trois pièces fictives :
 
 ```bash
-git clone https://github.com/Matt95354855/Mass_Classification.git
-cd Mass_Classification
+git clone https://github.com/Matt95354855/document-intelligence-platform.git
+cd document-intelligence-platform
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements-demo.txt
 python -m mass_classification.demo          # http://127.0.0.1:8000
@@ -61,7 +61,7 @@ Le classifieur neuronal nécessite des données annotées et un checkpoint appro
 
 ## Documentation
 
-[Guide détaillé](docs/GUIDE.fr.md) · [Guide technique](docs/README_TECHNIQUE.md) · [Conception de la plateforme](docs/GUIDE_CONSTRUCTION_PLATEFORME_COMPLETE.md) · [Benchmark DocLayNet](https://github.com/Matt95354855/Harness/blob/main/docs/doclaynet-benchmark-2026-10-01.md)
+[Guide détaillé](docs/GUIDE.fr.md) · [Guide technique](docs/README_TECHNIQUE.md) · [Conception de la plateforme](docs/GUIDE_CONSTRUCTION_PLATEFORME_COMPLETE.md) · [Benchmark DocLayNet](https://github.com/Matt95354855/llm-agent-harness/blob/main/docs/doclaynet-benchmark-2026-10-01.md)
 
 ## Licence
 

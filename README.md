@@ -1,12 +1,12 @@
-# Mass Classification
+# Document Intelligence Platform (Mass Classification)
 
 **Document intelligence platform for financial and investigative case files: ingest, extract, classify, search and explore every document with its provenance.** Every entity link points back to a source passage, every score is explained, and analysts record their review in a tamper-evident audit log.
 
-[![CI](https://github.com/Matt95354855/Mass_Classification/actions/workflows/ci.yml/badge.svg)](https://github.com/Matt95354855/Mass_Classification/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/Python-3.11+-3776AB) ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-pgvector-336791) ![Docker](https://img.shields.io/badge/deploy-Docker%20%7C%20K8s-2496ED)
+[![CI](https://github.com/Matt95354855/document-intelligence-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/Matt95354855/document-intelligence-platform/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/Python-3.11+-3776AB) ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-pgvector-336791) ![Docker](https://img.shields.io/badge/deploy-Docker%20%7C%20K8s-2496ED)
 
 [English](README.md) · [Français](README.fr.md)
 
-> This service is also integrated into the [Harness](https://github.com/Matt95354855/Harness) monorepo, which orchestrates it with local LLMs.
+> This service is also integrated into the [Harness](https://github.com/Matt95354855/llm-agent-harness) monorepo, which orchestrates it with local LLMs.
 
 ## Highlights
 
@@ -36,8 +36,8 @@ flowchart LR
 Discovery mode — no Docker, account or model download, three fictional documents:
 
 ```bash
-git clone https://github.com/Matt95354855/Mass_Classification.git
-cd Mass_Classification
+git clone https://github.com/Matt95354855/document-intelligence-platform.git
+cd document-intelligence-platform
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements-demo.txt
 python -m mass_classification.demo          # http://127.0.0.1:8000
@@ -61,7 +61,7 @@ The neural classifier needs annotated data and an approved checkpoint before it 
 
 ## Documentation
 
-[Detailed guide (FR)](docs/GUIDE.fr.md) · [Technical guide (FR)](docs/README_TECHNIQUE.md) · [Platform design (FR)](docs/GUIDE_CONSTRUCTION_PLATEFORME_COMPLETE.md) · [DocLayNet benchmark](https://github.com/Matt95354855/Harness/blob/main/docs/doclaynet-benchmark-2026-10-01.md)
+[Detailed guide (FR)](docs/GUIDE.fr.md) · [Technical guide (FR)](docs/README_TECHNIQUE.md) · [Platform design (FR)](docs/GUIDE_CONSTRUCTION_PLATEFORME_COMPLETE.md) · [DocLayNet benchmark](https://github.com/Matt95354855/llm-agent-harness/blob/main/docs/doclaynet-benchmark-2026-10-01.md)
 
 ## License
 
